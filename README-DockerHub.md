@@ -6,10 +6,16 @@
 - Source code: [GitHub](https://github.com/google85/vscode-devcontainer-php)
 
 - Usage:
+    - Pull the image
+    ```bash
+    docker pull google85/vscode-devcontainer-php:8.1
+    ```
+    
     - Create a `.devcontainer` folder in the root of your project
     ```bash
     mkdir -p .devcontainer
-    ```    
+    ```
+
     - Create the `devcontainer.json` configuration file
     ```bash
     cat <<EOF | tee .devcontainer/devcontainer.json
@@ -24,7 +30,7 @@
         ],
         "customizations": {
             "vscode": {
-                "settings": { 
+                "settings": {
                 },
 
                 // Add the IDs of extensions you want installed when the container is created.
@@ -40,7 +46,6 @@
             8000
         ]
     }
-
     EOF
     ```
 
@@ -48,7 +53,6 @@
     ```bash
     cat <<EOF | tee .devcontainer/docker-compose.devcontainer.yml
     version: '3'
-
     services:
     php:
         image: google85/vscode-devcontainer-php:8.1
@@ -59,9 +63,9 @@
         #- ../.env
         environment:
         - TZ=Europe/Bucharest
-        #- COMPOSER_AUTH=${COMPOSER_AUTH}
+        - COMPOSER_AUTH=
         volumes:
-        - ..:/var/www/html:cached
+        - .:/var/www/html:cached
         extra_hosts:
         - "host.docker.internal:host-gateway"
         networks:
