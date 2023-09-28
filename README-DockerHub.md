@@ -51,7 +51,7 @@
 
     services:
     php:
-        image: google85/vscode-devcontainer-php
+        image: google85/vscode-devcontainer-php:8.1
         container_name: php
         restart: unless-stopped
         working_dir: /var/www/html
